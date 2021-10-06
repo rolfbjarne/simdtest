@@ -9,14 +9,14 @@ struct StructA {
 }
 
 class C {
-	[DllImport ("libtest.dylib", EntryPoint="CallMeDouble")]
+	[DllImport ("test.dylib", EntryPoint="CallMeDouble")]
 	static extern void CallMeDoubleA (StructA arg);
 
 #if NET
-	[DllImport ("libtest.dylib", EntryPoint="CallMeFloat")]
+	[DllImport ("test.dylib", EntryPoint="CallMeFloat")]
 	unsafe static extern void CallMeFloatB (Vector128<float>* arg);
 
-	[DllImport ("libtest.dylib", EntryPoint="CallMeDouble")]
+	[DllImport ("test.dylib", EntryPoint="CallMeDouble")]
 	static extern void CallMeDoubleB (Vector256<double> arg);
 #endif
 
