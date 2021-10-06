@@ -18,6 +18,9 @@ class C {
 
 	[DllImport ("test.dylib", EntryPoint="CallMeDouble")]
 	unsafe static extern void CallMeDoubleB (string msg, Vector256<double>* arg);
+
+	[DllImport ("test.dylib", EntryPoint="CallMeDouble")]
+	unsafe static extern void CallMeDoubleC (string msg, Vector256<double> arg);
 #endif
 
 	static void Main ()
@@ -34,12 +37,21 @@ class C {
 #if NET
 		unsafe {
 			var b = Vector128.Create (1.0f, 2.0f, 3.0f, 4.0f);
-			CallMeFloatB ("Vector128", &b);
+			CallMeFloatB ("Vector128*", &b);
 		}
 
 		unsafe {
 			var b = Vector256.Create (1.0, 2.0, 3.0, 4.0);
-			CallMeDoubleB ("Vector256", &b);
+			CallMeDoubleB ("Vector256*", &b);
+		}
+
+		unsafe {
+			var b = Vector256.Create (1.0, 2.0, 3.0, 4.0);
+			try {
+				CallMeDoubleC ("Vector256", b);
+			} catch (Exception e) {
+				Console.WriteLine (e.Message);
+			}
 		}
 #endif
 	}
