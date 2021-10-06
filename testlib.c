@@ -2,7 +2,14 @@
 #include <stdio.h>
 
 void
-CallMe (vector_double4 arg)
+CallMeDouble (vector_double4 arg)
 {
-	printf ("CallMe (%f, %f, %f, %f)\n", arg [0], arg [1], arg [2], arg [3]);
+	printf ("CallMeDouble (%f, %f, %f, %f)\n", arg [0], arg [1], arg [2], arg [3]);
+}
+
+
+void
+CallMeFloat (vector_float4 arg)
+{
+	printf ("CallMeFloat (%f, %f, %f, %f)\n", arg [0], arg [1], arg [2], arg [3]);
 }
